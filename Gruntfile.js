@@ -18,7 +18,7 @@ module.exports = function (grunt) {
             styles: 'css',
             images: 'img',
             scripts: 'js',
-            temp: '.temp',
+            temp: 'temp',
             dist: 'www'
         },
 
@@ -68,6 +68,46 @@ module.exports = function (grunt) {
                     'lib/ngCordova/dist/ng-cordova.js',
                     'lib/requirejs/require.js'
                 ]
+            },
+            release: {
+                files: [{
+                    expand: true,
+                    dot: true,
+                    cwd: '<%= config.temp %>',
+                    dest: '<%= config.dist %>',
+                    src: [
+                        '<%= config.styles %>/all.min.css',
+                        'data/*',
+                        '<%= config.images %>/**/*.{png,jpg,jpeg,gif,webp,svg}',
+                        '<%= config.scripts %>/*.js',
+                        'tpls/**/*.html',
+                        'lib/requirejs/require.js'
+                    ]
+                }, {
+                    dest: '<%= config.dist %>/index.html',
+                    src: '<%= config.temp %>/index-release.html'
+                }, {
+                    expand: true,
+                    cwd: '<%= config.temp %>/lib/ionic/release/fonts/',
+                    dest: '<%= config.dist %>/fonts/',
+                    src: '*'
+                }]
+            }
+        },
+
+        concat: {
+            css: {
+                src: [
+                    '<%= config.app %>/lib/ionic/release/css/ionic.css',
+                    '<%= config.app %>/<%= config.styles %>/*'
+                ],
+                dest: '<%= config.temp %>/css/all.css'
+            }
+        },
+        cssmin: {
+            css: {
+                src: '<%= config.temp %>/css/all.css',
+                dest: '<%= config.temp %>/css/all.min.css'
             }
         },
 
@@ -87,6 +127,16 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.registerTask('debug', ['clean', 'jshint', 'copy:debug']);
 
-    grunt.registerTask('default', ['clean', 'jshint', 'copy:debug']);
+    grunt.registerTask('release', [
+        'clean',
+        'jshint',
+        'requirejs',
+        'concat',
+        'cssmin',
+        'copy:release'
+    ]);
+
+    grunt.registerTask('default', ['release']);
 };
