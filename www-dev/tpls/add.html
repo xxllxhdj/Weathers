@@ -1,0 +1,38 @@
+
+<ion-view view-title="添加城市" class="weather-pane add-view">
+    <ion-header-bar class="bar-subheader">
+        <div class="search-bar">
+            <label class="item-input-wrapper">
+                <input type="text" placeholder="搜索城市（中文/拼音）" ng-model="data.search" debounce="450">
+            </label>
+            <i class="icon ion-ios-close-empty" ng-if="data.search!==''" ng-click="clearSearch()"></i>
+        </div>
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <div class="suggest-wrapper" ng-if="data.search===''">
+            <div class="suggest-title">推荐城市</div>
+            <div class="suggest-body">
+                <ion-scroll has-bouncing="true">
+                    <ion-list>
+                        <ion-item class="suggest-row" ng-repeat="rows in data.suggestCity">
+                            <a class="col" ng-repeat="item in rows" ng-click="addCity(item)">{{item.citynm}}</a>
+                        </ion-item>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+        <div class="search-wrapper" ng-if="data.search!==''" ng-switch="data.searchCity.length">
+            <div ng-switch-when="0" class="search-title">没有找到任何城市</div>
+            <div ng-switch-default class="search-title">共找到{{data.searchCity.length}}个城市</div>
+            <div class="search-body">
+                <ion-scroll has-bouncing="true">
+                    <ion-list class="search-list">
+                        <a class="item search-item" ng-repeat="item in data.searchCity" ng-click="addCity(item)">
+                            {{item.citynm + ' ' + item.cityno}}
+                        </a>
+                    </ion-list>
+                </ion-scroll>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

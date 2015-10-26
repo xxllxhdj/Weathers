@@ -1,0 +1,508 @@
+
+/**********************************************************Common******************************************************/
+
+.platform-android.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) {
+    height: 64px; }
+.platform-android.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+    margin-top: 19px !important; }
+.platform-android.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 20px; }
+.platform-android.platform-cordova:not(.fullscreen) .tabs-top > .tabs, .platform-android.platform-cordova:not(.fullscreen) .tabs.tabs-top {
+    top: 64px; }
+.platform-android.platform-cordova:not(.fullscreen) .has-header, .platform-android.platform-cordova:not(.fullscreen) .bar-subheader {
+    top: 64px; }
+.platform-android.platform-cordova:not(.fullscreen) .has-subheader {
+    top: 108px; }
+.platform-android.platform-cordova:not(.fullscreen) .has-header.has-tabs-top {
+    top: 123px; }
+.platform-android.platform-cordova:not(.fullscreen) .has-header.has-subheader.has-tabs-top {
+    top: 157px; }
+.platform-android.platform-cordova.status-bar-hide {
+    margin-bottom: 20px; }
+
+[nav-view-transition="ios"] [nav-view="entering"],
+[nav-view-transition="ios"] [nav-view="leaving"] {
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+}
+[nav-view-transition="ios"][nav-view-direction="forward"],
+[nav-view-transition="ios"][nav-view-direction="back"] {
+    background-color: transparent;
+}
+
+.weather-pane {
+    background: -moz-linear-gradient(top, #000000 0%, #002852 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #000000), color-stop(100%, #002852));
+    background: -webkit-linear-gradient(top, #000000 0%, #002852 100%);
+    background: -o-linear-gradient(top, #000000 0%, #002852 100%);
+    background: -ms-linear-gradient(top, #000000 0%, #002852 100%);
+    background: linear-gradient(to bottom, #000000 0%, #002852 100%);
+}
+
+.bar {
+    border-color: transparent;
+    background-color: transparent;
+    background-image: none;
+    color: #fff;
+}
+.bar .button.button-icon,
+.bar .button .icon {
+    color: #fff;
+}
+
+/**********************************************************Common******************************************************/
+
+/*******************************************************weatherTips****************************************************/
+
+.weather-tips-top {
+    top: 80px;
+    bottom: auto;
+}
+.weather-tips-bottom {
+    top: auto;
+    bottom: 80px;
+}
+.weather-tips-container .weather-tips {
+    color: #fff;
+    width: auto;
+    max-width: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: transparent;
+}
+.weather-tips .popup-body {
+    background: rgba(185, 72, 70, 0.8);
+}
+.weather-tips .dismiss {
+    padding-right: 34px;
+}
+.weather-tips-wrapper {
+    position: relative;
+}
+.icon-close-right {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 11px;
+    height: 100%;
+    font-size: 30px;
+}
+.weather-tips-container.popup-hidden .popup {
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+}
+.weather-tips-container.active .popup {
+    -webkit-animation-name: scaleIn;
+    animation-name: scaleIn;
+}
+@-webkit-keyframes scaleIn {
+    from {
+        -webkit-transform: scale(0.8);
+        opacity: 0; }
+
+    to {
+        -webkit-transform: scale(1);
+        opacity: 1; } }
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0; }
+
+    to {
+        transform: scale(1);
+        opacity: 1; } }
+
+/*******************************************************weatherTips****************************************************/
+
+/*****************************************************weather range****************************************************/
+
+.weather-range {
+    position: relative;
+    display: inline-block;
+    height: 270px;
+    width: 100%;
+    color: #fff;
+}
+.range-container {
+    height: 100%;
+    width: 100%;
+}
+.range-container .rag,
+.range-container .active-rag {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+.range-container .rag {
+    bottom: 12px;
+    width: 2px;
+    height: 20px;
+    background: #fff;
+    -webkit-transform-origin: 0 -100px;
+    transform-origin: 0 -100px;
+}
+.range-container .rag:first-child,
+.range-container .rag:last-child {
+    width: 1px;
+    height: 26px;
+    bottom: 7px;
+}
+.weather-range .temp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 80px;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.weather-range .weather {
+    position: absolute;
+    width: 30px;
+    bottom: 12px;
+    left: 50%;
+    font-size: 50px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+.weather-range .range-temp {
+    position: absolute;
+    left: 50%;
+    font-size: 14px;
+}
+.weather-range .low {
+    top: 2px;
+    margin-left: 30px;
+}
+.range-container .active-rag {
+    bottom: 45px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -webkit-transform-origin: 0 -80px;
+    transform-origin: 0 -80px;
+    background: #fff;
+}
+
+/*****************************************************weather range****************************************************/
+
+/*********************************************************home.html****************************************************/
+
+.home-view .has-header {
+    top: 34px;
+}
+.platform-android.platform-cordova:not(.fullscreen) .home-view .has-header {
+    top: 54px;
+}
+
+.weather-slide-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    margin-top: -1px;
+    padding-top: 1px;
+    margin-bottom: -1px;
+    width: auto;
+    height: auto;
+}
+.weather-slide-box  .slider-pager .slider-pager-page {
+    color: #fff;
+    font-size: 8px;
+}
+
+.weather-list .item {
+    background: transparent;
+    border: none;
+    text-align: center;
+    color: #fff;
+    padding: 0 10px 10px;
+    font-size: 100%;
+}
+.weather-list .item span,
+.weather-list .item i {
+    vertical-align: middle;
+}
+.weather-list .item i {
+    font-size: 28px;
+}
+.weather-list .weather {
+    font-size: 140%;
+}
+.weather-list .city {
+    font-size: 160%;
+}
+
+.future-bar {
+    position: absolute;
+    bottom: 30px;
+    overflow: hidden;
+    margin-top: -1px;
+    padding-top: 1px;
+    margin-bottom: -1px;
+    width: 100%;
+    height: auto;
+}
+.future-wrapper {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 15px 5px;
+    color: #fff;
+}
+.future-wrapper img {
+    width: 30px;
+}
+.future-wrapper .col {
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+.future-wrapper .col:last-child {
+    border-right: none;
+}
+.future-wrapper .col div {
+    margin: 5px 0;
+}
+
+/*********************************************************home.html****************************************************/
+
+/*******************************************************manager.html***************************************************/
+
+.city-list .city-item {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    color: #fff;
+}
+.city-list .city-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.city-item .item-content {
+    background-color: transparent;
+}
+.city-item .item-options .button {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: #fff;
+    font-size: 26px;
+}
+
+.manager-footer-bar {
+    height: 130px;
+}
+.manager-view .has-footer {
+    bottom: 130px;
+}
+
+.function-bar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.function-wrapper {
+    padding: 0 15px;
+    color: #fff;
+    text-decoration: initial;
+}
+.function-wrapper .icon {
+    display: block;
+    margin: 8px auto;
+    width: 75px;
+    height: 75px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 36px;
+}
+.function-wrapper .icon:before {
+    line-height: 74px;
+}
+.function-wrapper.activated .icon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/*******************************************************manager.html***************************************************/
+
+/*********************************************************add.html*****************************************************/
+
+.add-view .bar-subheader {
+    height: 51px;
+}
+.add-view .has-subheader {
+    top: 95px;
+}
+.platform-android.platform-cordova:not(.fullscreen) .add-view .has-subheader {
+    top: 115px;
+}
+
+.search-bar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    height: 41px;
+    margin: 0 5px;
+}
+.search-bar .item-input-wrapper {
+    background: transparent;
+}
+.search-bar input {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+}
+.search-bar i {
+    color: #fff;
+    font-size: 28px;
+    padding: 0 8px 0 0;
+    line-height: 40px;
+}
+
+.add-view .scroll-content {
+    margin: 15px 10px;
+    color: #fff;
+}
+
+.suggest-wrapper .suggest-title {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+.suggest-wrapper .suggest-title {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 38px;
+    line-height: 37px;
+}
+
+.suggest-body {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    margin-top: -1px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.suggest-body .scroll-view {
+    height: 100%;
+    margin-top: -4px;
+}
+.suggest-row {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    background: transparent;
+    display: flex;
+    padding: 0;
+    margin-top: 1px;
+    height: 80px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+}
+.suggest-row:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.suggest-row .col {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    line-height: 70px;
+}
+.suggest-row .col:last-child {
+    border-right: none;
+}
+.suggest-row .col.activated {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.search-wrapper .search-title {
+    background: rgba(255, 255, 255, 0.1);
+    height: 38px;
+    line-height: 37px;
+}
+.search-body {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    margin-top: -1px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    margin-bottom: 0;
+    width: auto;
+    height: auto;
+    border-top: none;
+}
+.search-body .scroll-view {
+    height: 100%;
+}
+.search-list .search-item {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-bottom: none;
+    color: #fff;
+}
+.search-list .search-item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.search-list .search-item.activated {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/*********************************************************add.html*****************************************************/
+
+/********************************************************more.html*****************************************************/
+
+.more-list .more-item {
+    background: transparent;
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 1px 0 0 0;
+    font-size: 18px;
+    padding: 20px;
+}
+.more-list .more-item:last-child {
+    border-bottom-width: 1px;
+}
+.more-item span:first-child {
+    float: left;
+}
+.more-item span:last-child {
+    float: right;
+}
+
+/********************************************************more.html*****************************************************/

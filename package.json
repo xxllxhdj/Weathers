@@ -1,0 +1,38 @@
+{
+  "name": "Weathers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xxllxhdj/Weathers.git"
+  },
+  "author": "XXL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xxllxhdj/Weathers/issues"
+  },
+  "homepage": "https://github.com/xxllxhdj/Weathers",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "^0.11.3",
+    "load-grunt-tasks": "^3.3.0",
+    "time-grunt": "^1.2.2"
+  },
+  "cordovaPlugins": [
+    "com.ionic.keyboard",
+    "cordova-plugin-statusbar",
+    "org.apache.cordova.splashscreen",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-geolocation",
+    "nl.x-services.plugins.toast",
+    "cordova-plugin-file"
+  ],
+  "localPlugins": []
+}
