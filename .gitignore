@@ -6,3 +6,5 @@ node_modules/
 platforms/
 plugins/
 www-dev/lib/
+.temp/
+www/

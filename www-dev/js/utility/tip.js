@@ -82,12 +82,16 @@ define(['ionic'], function () {
                     });
 
                 self.show = function() {
-                    if (self.isShown || self.removed) return;
+                    if (self.isShown || self.removed) {
+                        return;
+                    }
 
                     self.isShown = true;
                     ionic.requestAnimationFrame(function() {
                         //if hidden while waiting for raf, don't show
-                        if (!self.isShown) return;
+                        if (!self.isShown) {
+                            return;
+                        }
 
                         self.element.removeClass('popup-hidden');
                         self.element.addClass('popup-showing active');
@@ -95,8 +99,10 @@ define(['ionic'], function () {
                 };
 
                 self.hide = function(callback) {
-                    callback = callback || noop;
-                    if (!self.isShown) return callback();
+                    callback = callback || angular.noop;
+                    if (!self.isShown) {
+                        return callback();
+                    }
 
                     self.isShown = false;
                     self.element.removeClass('active');
@@ -105,7 +111,9 @@ define(['ionic'], function () {
                 };
 
                 self.remove = function() {
-                    if (self.removed) return;
+                    if (self.removed) {
+                        return;
+                    }
 
                     self.hide(function() {
                         self.element.remove();
@@ -120,7 +128,9 @@ define(['ionic'], function () {
 
             function onHardwareBackButton() {
                 var last = popupStack[popupStack.length - 1];
-                last && last.responseDeferred.resolve();
+                if (last) {
+                    last.responseDeferred.resolve();
+                }
             }
 
             function showPopup(options) {
@@ -142,7 +152,9 @@ define(['ionic'], function () {
 
                 // Expose a 'close' method on the returned promise
                 popup.responseDeferred.promise.close = function popupClose(result) {
-                    if (!popup.removed) popup.responseDeferred.resolve(result);
+                    if (!popup.removed) {
+                        popup.responseDeferred.resolve(result);
+                    }
                 };
                 //DEPRECATED: notify the promise with an object with a close method
                 popup.responseDeferred.notify({ close: popup.responseDeferred.close });
@@ -179,7 +191,7 @@ define(['ionic'], function () {
                                     $ionicBody.removeClass('popup-open');
                                 }
                             }, 400, false);
-                            (weatherTips._backButtonActionDone || noop)();
+                            (weatherTips._backButtonActionDone || angular.noop)();
                         }
 
                         popup.remove();
