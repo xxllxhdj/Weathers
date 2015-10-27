@@ -38,5 +38,8 @@
     "nl.x-services.plugins.toast",
     "cordova-plugin-file"
   ],
-  "localPlugins": []
+  "localPlugins": [],
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

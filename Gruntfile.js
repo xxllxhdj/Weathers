@@ -59,7 +59,7 @@ module.exports = function (grunt) {
                     'data/*',
                     '<%= config.images %>/**/*.{png,jpg,jpeg,gif,webp,svg}',
                     '<%= config.scripts %>/**/*.js',
-                    '*.html',
+                    'index.html',
                     'tpls/**/*.html',
                     'lib/ionic/release/css/ionic.css',
                     'lib/ionic/release/fonts/*',
