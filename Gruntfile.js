@@ -111,6 +111,20 @@ module.exports = function (grunt) {
             }
         },
 
+        imagemin: {
+            dist: {
+                options: {
+                    optimizationLevel: 3
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.app %>/<%= config.images %>/',
+                    src: ['**/*.{png,jpg,jpeg,gif,webp,svg}'],
+                    dest: '<%= config.temp %>/img/'
+                }]
+            }
+        },
+
         requirejs: {
             app: {
                 options: {
@@ -135,6 +149,7 @@ module.exports = function (grunt) {
         'requirejs',
         'concat',
         'cssmin',
+        'imagemin',
         'copy:release'
     ]);
 
