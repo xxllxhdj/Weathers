@@ -138,6 +138,44 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+
+        // Watches files for changes and runs tasks based on the changed files
+        watch: {
+            dev: {
+                files: [
+                    '<%= config.app %>/{,*/}*.html',
+                    '<%= config.app %>/{,*/}*.css',
+                    '<%= config.app %>/<%= config.images %>/{,*/}*',
+                    '<%= config.app %>/<%= config.scripts %>/{,*/}*.js',
+                    '<%= config.app %>/tpls/{,*/}*.js'
+                ],
+                tasks: ['copy:debug']
+            }
+        },
+
+        browserSync: {
+            options: {
+                notify: false,
+                background: true,
+                watchOptions: {
+                    ignored: ''
+                }
+            },
+            livereload: {
+                options: {
+                    files: [
+                        '<%= config.dist %>/{,*/}*.html',
+                        '<%= config.dist %>/{,*/}*.css',
+                        '<%= config.dist %>/img/{,*/}*',
+                        '<%= config.dist %>/js/{,*/}*.js'
+                    ],
+                    port: 9006,
+                    server: {
+                        baseDir: ['<%= config.dist %>']
+                    }
+                }
+            }
         }
     });
 
@@ -152,6 +190,14 @@ module.exports = function (grunt) {
         'imagemin',
         'copy:release'
     ]);
+
+    grunt.registerTask('serve', 'start the server and preview your app', function (target) {
+        grunt.task.run([
+            'debug',
+            'browserSync:livereload',
+            'watch'
+        ]);
+    });
 
     grunt.registerTask('default', ['release']);
 };
