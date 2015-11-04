@@ -49,18 +49,44 @@ module.exports = function (grunt) {
 
         // Copies remaining files to places other tasks can use
         copy: {
-            debug: {
+            scripts: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>',
+                dest: '<%= config.dist %>',
+                src: ['<%= config.scripts %>/**/*.js']
+            },
+            styles: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>',
+                dest: '<%= config.dist %>',
+                src: ['<%= config.styles %>/*']
+            },
+            images: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>',
+                dest: '<%= config.dist %>',
+                src: ['<%= config.images %>/**/*.{png,jpg,jpeg,gif,webp,svg}']
+            },
+            htmls: {
                 expand: true,
                 dot: true,
                 cwd: '<%= config.app %>',
                 dest: '<%= config.dist %>',
                 src: [
-                    '<%= config.styles %>/*',
-                    'data/*',
-                    '<%= config.images %>/**/*.{png,jpg,jpeg,gif,webp,svg}',
-                    '<%= config.scripts %>/**/*.js',
                     'index.html',
-                    'tpls/**/*.html',
+                    'tpls/**/*.html'
+                ]
+            },
+            libs: {
+                expand: true,
+                dot: true,
+                cwd: '<%= config.app %>',
+                dest: '<%= config.dist %>',
+                src: [
+                    'data/*',
                     'lib/ionic/release/css/ionic.css',
                     'lib/ionic/release/fonts/*',
                     'lib/ionic/release/js/ionic.bundle.js',
@@ -142,15 +168,24 @@ module.exports = function (grunt) {
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
-            dev: {
+            scripts: {
+                files: ['<%= config.app %>/<%= config.scripts %>/{,*/}*.js'],
+                tasks: ['copy:scripts']
+            },
+            styles: {
+                files: ['<%= config.app %>/{,*/}*.css'],
+                tasks: ['copy:styles']
+            },
+            images: {
+                files: [ '<%= config.app %>/<%= config.images %>/{,*/}*'],
+                tasks: ['copy:images']
+            },
+            htmls: {
                 files: [
                     '<%= config.app %>/{,*/}*.html',
-                    '<%= config.app %>/{,*/}*.css',
-                    '<%= config.app %>/<%= config.images %>/{,*/}*',
-                    '<%= config.app %>/<%= config.scripts %>/{,*/}*.js',
-                    '<%= config.app %>/tpls/{,*/}*.js'
+                    '<%= config.app %>/tpls/{,*/}*.html'
                 ],
-                tasks: ['copy:debug']
+                tasks: ['copy:htmls']
             }
         },
 
@@ -179,7 +214,15 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('debug', ['clean', 'jshint', 'copy:debug']);
+    grunt.registerTask('debug', [
+        'clean',
+        'jshint',
+        'copy:scripts',
+        'copy:styles',
+        'copy:images',
+        'copy:htmls',
+        'copy:libs'
+    ]);
 
     grunt.registerTask('release', [
         'clean',
