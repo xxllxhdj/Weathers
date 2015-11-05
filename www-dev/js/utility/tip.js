@@ -1,5 +1,5 @@
 
-define(['ionic'], function () {
+define(['ionic', 'utility/utility'], function () {
     var TIPS_TPL =
         '<div class="popup-container weather-tips-container" ng-class="cssClass">' +
             '<div class="popup weather-tips">' +
