@@ -102,6 +102,7 @@ module.exports = function (grunt) {
                     cwd: '<%= config.temp %>',
                     dest: '<%= config.dist %>',
                     src: [
+                        'index.html',
                         '<%= config.styles %>/all.min.css',
                         'data/*',
                         '<%= config.images %>/**/*.{png,jpg,jpeg,gif,webp,svg}',
@@ -109,9 +110,6 @@ module.exports = function (grunt) {
                         'tpls/**/*.html',
                         'lib/requirejs/require.js'
                     ]
-                }, {
-                    dest: '<%= config.dist %>/index.html',
-                    src: '<%= config.temp %>/index-release.html'
                 }, {
                     expand: true,
                     cwd: '<%= config.temp %>/lib/ionic/release/fonts/',
@@ -164,6 +162,10 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+
+        usemin: {
+           html: '<%= config.dist %>/*.html'
         },
 
         // Watches files for changes and runs tasks based on the changed files
@@ -231,7 +233,8 @@ module.exports = function (grunt) {
         'concat',
         'cssmin',
         'imagemin',
-        'copy:release'
+        'copy:release',
+        'usemin'
     ]);
 
     grunt.registerTask('serve', 'start the server and preview your app', function (target) {
