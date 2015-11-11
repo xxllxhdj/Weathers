@@ -238,12 +238,20 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('serve', 'start the server and preview your app', function (target) {
+        if (target === 'release') {
+            grunt.task.run([
+                'release'
+            ]);
+        } else {
+            grunt.task.run([
+                'debug'
+            ]);
+        }
         grunt.task.run([
-            'debug',
             'browserSync:livereload',
             'watch'
         ]);
     });
 
-    grunt.registerTask('default', ['release']);
+    grunt.registerTask('default', ['serve']);
 };
